@@ -1,0 +1,29 @@
+spring:
+  security:
+    user:
+      name: user
+      password: your_password_here
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://your-db-url:3306/your-db-name?allowPublicKeyRetrieval=true&useSSL=false
+    username: your_db_username
+    password: your_db_password
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  redis:
+    host: your-redis-host
+    port: 6379
+
+
+jwt:
+  expiration: 100
+  refresh-expiration: 86400
+  secretKey: your_jwt_secret_key
