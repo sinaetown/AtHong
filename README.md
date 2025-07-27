@@ -4,13 +4,15 @@ React & Spring Boot 기반의 1인 개발 **온라인 쇼핑몰 플랫폼**입�
 
 _JWT 인증, Redis 토큰 저장, SSE 실시간 알림, AOP 로깅_ 등 **보안성과 실시간성**을 고려한 백엔드 구조로 설계했습니다.
 
+**AWS 인프라**를 활용해 프론트엔드와 백엔드 모두 HTTPS 기반 실서비스 수준의 배포를 구현했습니다.
+
 ---
 
 ## 🎯 Project Goal
 
-- 인증/인가, 실시간 알림, 트랜잭션 기반 주문 처리 등  
+- 인증/인가, 실시간 알림, 트랜잭션 기반 주문 처리, 사용자와 관리자의 권한 분리 기반 서비스 흐름 등  
   **실무형 백엔드 기술 스택을 프로젝트에 직접 적용**해보고자 기획
-- 사용자와 관리자의 **권한 분리 기반 서비스 흐름**을 구현함으로써 실제 상용 서비스의 구조를 재현
+- **AWS 기반 인프라를 활용한 HTTPS 배포**를 통해 실제 상용 서비스와 유사한 배포 및 운영 구조를 구현하기 위함
 
 ## 🎒 User Journey
 
@@ -97,7 +99,7 @@ _JWT 인증, Redis 토큰 저장, SSE 실시간 알림, AOP 로깅_ 등 **보안
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 
 ### Backend
-![Java 11](https://img.shields.io/badge/java%2011-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Java 11](https://img.shields.io/badge/java%2011-%2300665E.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Java Spring](https://img.shields.io/badge/Java%20Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
 ![Spring Security](https://img.shields.io/badge/Spring%20Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)
@@ -106,6 +108,15 @@ _JWT 인증, Redis 토큰 저장, SSE 실시간 알림, AOP 로깅_ 등 **보안
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![JSON Web Tokens](https://img.shields.io/badge/JSON%20Web%20Tokens-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
 
+### Deploy
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![S3](https://img.shields.io/badge/Amazon%20S3-CC6699?style=for-the-badge&logo=amazons3&logoColor=white)
+![CloudFront](https://img.shields.io/badge/Amazon%20CloudFront-CC6699?style=for-the-badge&logo=amazons3&logoColor=white)
+![EC2](https://img.shields.io/badge/Amazon%20EC2-663399?style=for-the-badge&logo=amazons3&logoColor=white)
+![ALB](https://img.shields.io/badge/Amazon%20ALB-663399?style=for-the-badge&logo=amazons3&logoColor=white)
+![Route53](https://img.shields.io/badge/Amazon%20Route%2053-663399?style=for-the-badge&logo=amazons3&logoColor=white)
+![RDS](https://img.shields.io/badge/Amazon%20RDS-4479A1?style=for-the-badge&logo=amazons3&logoColor=white)
+![Elasticache](https://img.shields.io/badge/Amazon%20Elasticache-4479A1?style=for-the-badge&logo=amazons3&logoColor=white)
 ---
 
 ## 🚀 Features
@@ -171,4 +182,7 @@ _JWT 인증, Redis 토큰 저장, SSE 실시간 알림, AOP 로깅_ 등 **보안
 
 ## 🏛️ Design Architecture
 
-[![At Hong Architecture](https://github.com/sinaetown/AtHong/raw/main/At%20Hong%20Architecture.png)](https://github.com/sinaetown/AtHong/blob/main/At%20Hong%20Architecture.png)
+- 프론트는 S3 + CloudFront + Route 53으로 HTTPS 정적 배포
+- 백엔드는 EC2 + ALB + ACM으로 HTTPS 보안 API 서버 운영
+- 도메인은 at-hong.shop(프론트), server.at-hong.shop(백엔드)로 분리
+- ElastiCache(Redis)와 RDS(MariaDB)로 성능과 가용성 강화
