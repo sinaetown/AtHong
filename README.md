@@ -180,7 +180,9 @@ _JWT 인증, Redis 토큰 저장, SSE 실시간 알림, AOP 로깅_ 등 **보안
 
 </details>
 
-## 🏛️ Design Architecture
+## 🏛️ System Architecture
+
+[![At Hong Architecture](https://github.com/sinaetown/AtHong/raw/main/At%20Hong%20Architecture.png)](https://github.com/sinaetown/AtHong/blob/main/At%20Hong%20Architecture.png)
 
 - 프론트는 S3 + CloudFront + Route 53으로 HTTPS 정적 배포
 - 백엔드는 EC2 + ALB + ACM으로 HTTPS 보안 API 서버 운영
